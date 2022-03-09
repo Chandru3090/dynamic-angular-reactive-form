@@ -1,0 +1,32 @@
+.hint-section {
+    margin: 10px 0px 20px 0px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.example-form {
+    .example-full-width {
+        width: 100%;
+    }
+}
+.dynamic-controls {
+    width: 100%;
+    display: flex;
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+    .control {
+        margin-right: 10px;
+    }
+}
+mat-icon {
+    color: lightgray;
+}
+
+mat-label {
+    color: #00000c;
+    font-weight: 500;
+}

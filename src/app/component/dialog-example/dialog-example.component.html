@@ -1,0 +1,77 @@
+<h2 mat-dialog-title>Start Process</h2>
+<mat-dialog-content class="mat-dialog-content mat-typography">
+    <div class="hint-section">
+        <mat-icon aria-hidden="false" aria-label="Info Icon">info</mat-icon>You can set variables, using a generic form,
+        by clicking "Add Variable" link below
+    </div>
+    <form [formGroup]='exampleForm' novalidate class="example-form">
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Business Key</mat-label>
+            <input formControlName="businessKey" type="text" matInput placeholder="Business Key">
+            <mat-error>
+                Please enter a Business Key
+            </mat-error>
+            <mat-error>
+                Business Key is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <div class="dynamic-controls">
+            <div class="link">
+                <button mat-button color="primary" (click)="addFormControl()">Add Variable <mat-icon aria-hidden="false"
+                        aria-label="Add Variable Icon">
+                        add_circle_outline</mat-icon></button>
+            </div>
+        </div>
+        <div class="dynamic-controls" *ngFor="let item of varaiblesGroup; let i = index">
+            <div class="row" [formGroupName]="i">
+                <div class="link">
+                    <button mat-button color="primary" id="remove_button_{{i}}" (click)="removeControl(i)">Remove
+                        Variable
+                        <mat-icon aria-hidden="false" aria-label="remove Variable Icon">
+                            clear</mat-icon>
+                    </button>
+                </div>
+                <div class="control">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input type="text" matInput formControlName="name" id="name_{{i}}" placeholder="Name">
+                        <mat-error>
+                            Please enter a Name
+                        </mat-error>
+                        <mat-error>
+                            Name Key is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="control">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Type</mat-label>
+                        <input type="text" matInput formControlName="type" id="type_{{i}}" placeholder="Type">
+                        <mat-error>
+                            Please enter a Type
+                        </mat-error>
+                        <mat-error>
+                            Type Key is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="control">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Value</mat-label>
+                        <input type="text" matInput formControlName="value" id="value_{{i}}" placeholder="Value">
+                        <mat-error>
+                            Please enter a Value
+                        </mat-error>
+                        <mat-error>
+                            Value Key is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Save</button>
+</mat-dialog-actions>
